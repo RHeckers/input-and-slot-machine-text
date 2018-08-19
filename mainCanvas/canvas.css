@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:700);
+
+
+.spinBtn{
+  display: none;
+    background:#d4004f;
+    color:#fff;
+    border:none;
+    margin-top: 150px;
+    position: relative;
+    height:100px;
+    font-weight: 100;
+    font-size:2.5rem;
+    padding:0 2em;
+    width: 40%;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    border-radius: 2px;
+    margin-left: 30%;
+  }
+  .spinBtn:hover{
+    background:#690027;
+    color:#d4004f;
+  }
+  .spinBtn:before,.spinBtn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #d4004f;
+    transition:400ms ease all;
+  }
+  .spinBtn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .spinBtn:hover:before,.spinBtn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+  
