@@ -49,6 +49,16 @@
         "name": "Jordy Guzak",
         "department": "Yunify Applications",
         "assignedTo": ""
+    },
+    {
+        "name": "Bart Engelen",
+        "department": "Marketing",
+        "assignedTo": ""
+    },
+    {
+        "name": "Paul van Dam",
+        "department": "Marketing",
+        "assignedTo": ""
     }
 
 ]

@@ -1,4 +1,3 @@
-let nameInput = document.getElementById('nameInput');
 let searchResultsBox = document.getElementById('searchResultsBox');
 let confirmNameBtn = document.getElementById('confirmNameBtn');
 let firstTenLoaded = false;
@@ -7,7 +6,11 @@ var typingTimer;                //timer identifier
 var doneTypingInterval = 400;
 let selectedName;
 let nameData = [];
+let retrievedObject = localStorage.getItem('nameData');
+
 let searchNames = [];
+
+
 
 //Fetch the JSON file with all the details
 fetch('./names.json')
@@ -16,23 +19,27 @@ fetch('./names.json')
 })
 .then(function(myJson) {
   
+  if(retrievedObject){
+    nameData = JSON.parse(retrievedObject);
+  }else{
+    for(let i = 0; i < myJson.people.length; i++){
+      nameData.push(myJson.people[i]);
+      nameData.sort(function(a, b){
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+        return 0;
+    })
   
-  for(let i = 0; i < myJson.people.length; i++){
-    nameData.push(myJson.people[i]);
-    nameData.sort(function(a, b){
-      if(a.name < b.name) return -1;
-      if(a.name > b.name) return 1;
-      return 0;
-  })
-
-    if(i == (myJson.people.length - 1)){
-      nameInput.style.display = "block";
-      TweenMax.to(nameInput, 1.5, {opacity: 1})
-
-      console.log(nameData);
+      if(i == (myJson.people.length - 1)){
+        
+  
+        console.log(nameData);
+      }
+      
     }
-    
+
   }
+  
     
   
 });
@@ -131,8 +138,12 @@ function doneTyping (e) {
       }
 
       if(i == (nameData.length - 1)){
-        console.log(123)
+        
         for(let i = 0; i < searchNames.length; i++){
+          if(i == 10){
+            i == searchNames.length;
+
+          }
           let searchResultBar = document.createElement("div");
           let textHolder = document.createElement("p");
           let delay = i * 0.1;

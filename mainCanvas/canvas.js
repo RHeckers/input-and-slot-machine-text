@@ -1,8 +1,10 @@
 let btn = document.getElementById('spinBtn');
+let nameInput = document.getElementById('nameInput');
 let text = 'Tab the screen and get to know your colleagues';  // The message displayed
 let activated = false;
+let nameInputActive = false;
 
-btn.addEventListener('click', spinAgain);
+window.addEventListener('click', showNameInput);
 
 
 function canvasText(){
@@ -10,12 +12,12 @@ function canvasText(){
     let chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&.: -';  // All possible Charactrers
     let scale = 30;  // Font size and overall scale
     let breaks = 0.003;  // Speed loss per frame
-    let endSpeed = 0.05;  // Speed at which the letter stops
+    let endSpeed = 0.1;  // Speed at which the letter stops
     let firstLetter = 180;  // Number of frames untill the first letter stopps (60 frames per second)
     let delay = 2;  // Number of seconds between first and last letter stopping
 
     if(activated){
-        delay = 60;
+        delay = 45;
     }
 
     activated = true;
@@ -87,11 +89,11 @@ function canvasText(){
 
 canvasText();
 
-function spinAgain(){
-    let name = "Roberto Heckers"
-    text = "Get to know: " + name;
-    
-    canvasText();
-    
-    
+function showNameInput(){
+    if(!nameInputActive){
+        nameInput.style.display = "block";
+        TweenMax.to(nameInput, 1.5, {opacity: 1});
+        nameInput.focus();
+        nameInputActive = true;
+    }
 }
